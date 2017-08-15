@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>{{ code }}</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+    {% include 'css.html.twig' %}
+</head>
+
+<body class="four-zero-four">
+    <div class="four-zero-four-container">
+        <div class="error-code">{{ code }}</div>
+        <div class="error-message">{{ message }}</div>
+        <div class="">{{ trace }}</div>
+
+        <div class="button-place">
+            <a href="/" class="btn btn-default btn-lg waves-effect">GO TO HOMEPAGE</a>
+        </div>
+    </div>
+
+    {% include 'js.html.twig' %}
+</body>
+
+</html>

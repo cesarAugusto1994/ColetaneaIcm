@@ -1,0 +1,525 @@
+<section>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar">
+        <!-- User Info -->
+        <div class="user-info">
+            <div class="image">
+                <img src="data:image/png;base64,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" width="48" height="48" alt="User" />
+            </div>
+            <div class="info-container">
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
+                <div class="email">john.doe@example.com</div>
+                <div class="btn-group user-helper-dropdown">
+                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                        <li role="seperator" class="divider"></li>
+                        <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
+                        <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                        <li role="seperator" class="divider"></li>
+                        <li><a href="{{ path('logout') }}"><i class="material-icons">input</i>Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- #User Info -->
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list">
+                <li class="header">MAIN NAVIGATION</li>
+                <li class="active">
+                    <a href="/">
+                        <i class="material-icons">home</i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                {#
+                <li>
+                    <a href="pages/typography.html">
+                        <i class="material-icons">text_fields</i>
+                        <span>Typography</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/helper-classes.html">
+                        <i class="material-icons">layers</i>
+                        <span>Helper Classes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">widgets</i>
+                        <span>Widgets</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span>Cards</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="pages/widgets/cards/basic.html">Basic</a>
+                                </li>
+                                <li>
+                                    <a href="pages/widgets/cards/colored.html">Colored</a>
+                                </li>
+                                <li>
+                                    <a href="pages/widgets/cards/no-header.html">No Header</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span>Infobox</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
+                                </li>
+                                <li>
+                                    <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
+                                </li>
+                                <li>
+                                    <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
+                                </li>
+                                <li>
+                                    <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
+                                </li>
+                                <li>
+                                    <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">swap_calls</i>
+                        <span>User Interface (UI)</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="pages/ui/alerts.html">Alerts</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/animations.html">Animations</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/badges.html">Badges</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/ui/breadcrumbs.html">Breadcrumbs</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/buttons.html">Buttons</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/collapse.html">Collapse</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/colors.html">Colors</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/dialogs.html">Dialogs</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/icons.html">Icons</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/labels.html">Labels</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/list-group.html">List Group</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/media-object.html">Media Object</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/modals.html">Modals</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/notifications.html">Notifications</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/pagination.html">Pagination</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/preloaders.html">Preloaders</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/progressbars.html">Progress Bars</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/range-sliders.html">Range Sliders</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/sortable-nestable.html">Sortable & Nestable</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/tabs.html">Tabs</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/thumbnails.html">Thumbnails</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/tooltips-popovers.html">Tooltips & Popovers</a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/waves.html">Waves</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span>Forms</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="pages/forms/basic-form-elements.html">Basic Form Elements</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/form-examples.html">Form Examples</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/form-validation.html">Form Validation</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/form-wizard.html">Form Wizard</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/editors.html">Editors</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">view_list</i>
+                        <span>Tables</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="pages/tables/normal-tables.html">Normal Tables</a>
+                        </li>
+                        <li>
+                            <a href="pages/tables/jquery-datatable.html">Jquery Datatables</a>
+                        </li>
+                        <li>
+                            <a href="pages/tables/editable-table.html">Editable Tables</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">perm_media</i>
+                        <span>Medias</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="pages/medias/image-gallery.html">Image Gallery</a>
+                        </li>
+                        <li>
+                            <a href="pages/medias/carousel.html">Carousel</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">pie_chart</i>
+                        <span>Charts</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="pages/charts/morris.html">Morris</a>
+                        </li>
+                        <li>
+                            <a href="pages/charts/flot.html">Flot</a>
+                        </li>
+                        <li>
+                            <a href="pages/charts/chartjs.html">ChartJS</a>
+                        </li>
+                        <li>
+                            <a href="pages/charts/sparkline.html">Sparkline</a>
+                        </li>
+                        <li>
+                            <a href="pages/charts/jquery-knob.html">Jquery Knob</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">content_copy</i>
+                        <span>Example Pages</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="pages/examples/sign-in.html">Sign In</a>
+                        </li>
+                        <li>
+                            <a href="pages/examples/sign-up.html">Sign Up</a>
+                        </li>
+                        <li>
+                            <a href="pages/examples/forgot-password.html">Forgot Password</a>
+                        </li>
+                        <li>
+                            <a href="pages/examples/blank.html">Blank Page</a>
+                        </li>
+                        <li>
+                            <a href="pages/examples/404.html">404 - Not Found</a>
+                        </li>
+                        <li>
+                            <a href="pages/examples/500.html">500 - Server Error</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">map</i>
+                        <span>Maps</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="pages/maps/google.html">Google Map</a>
+                        </li>
+                        <li>
+                            <a href="pages/maps/yandex.html">YandexMap</a>
+                        </li>
+                        <li>
+                            <a href="pages/maps/jvectormap.html">jVectorMap</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">trending_down</i>
+                        <span>Multi Level Menu</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Menu Item</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Menu Item - 2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span>Level - 2</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <span>Menu Item</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="menu-toggle">
+                                        <span>Level - 3</span>
+                                    </a>
+                                    <ul class="ml-menu">
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                <span>Level - 4</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="pages/changelogs.html">
+                        <i class="material-icons">update</i>
+                        <span>Changelogs</span>
+                    </a>
+                </li>
+                <li class="header">LABELS</li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="material-icons col-red">donut_large</i>
+                        <span>Important</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="material-icons col-amber">donut_large</i>
+                        <span>Warning</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="material-icons col-light-blue">donut_large</i>
+                        <span>Information</span>
+                    </a>
+                </li>
+                #}
+            </ul>
+        </div>
+        <!-- #Menu -->
+        <!-- Footer -->
+        <div class="legal">
+            <div class="copyright">
+                &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
+            </div>
+            <div class="version">
+                <b>Version: </b> 1.0.5
+            </div>
+        </div>
+        <!-- #Footer -->
+
+
+    </aside>
+    <!-- #END# Left Sidebar -->
+    <!-- Right Sidebar -->
+    <aside id="rightsidebar" class="right-sidebar">
+        <ul class="nav nav-tabs tab-nav-right" role="tablist">
+            <li role="presentation" class="active"><a href="#skins" data-toggle="tab">SKINS</a></li>
+            <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
+                <ul class="demo-choose-skin">
+                    <li data-theme="red" class="active">
+                        <div class="red"></div>
+                        <span>Red</span>
+                    </li>
+                    <li data-theme="pink">
+                        <div class="pink"></div>
+                        <span>Pink</span>
+                    </li>
+                    <li data-theme="purple">
+                        <div class="purple"></div>
+                        <span>Purple</span>
+                    </li>
+                    <li data-theme="deep-purple">
+                        <div class="deep-purple"></div>
+                        <span>Deep Purple</span>
+                    </li>
+                    <li data-theme="indigo">
+                        <div class="indigo"></div>
+                        <span>Indigo</span>
+                    </li>
+                    <li data-theme="blue">
+                        <div class="blue"></div>
+                        <span>Blue</span>
+                    </li>
+                    <li data-theme="light-blue">
+                        <div class="light-blue"></div>
+                        <span>Light Blue</span>
+                    </li>
+                    <li data-theme="cyan">
+                        <div class="cyan"></div>
+                        <span>Cyan</span>
+                    </li>
+                    <li data-theme="teal">
+                        <div class="teal"></div>
+                        <span>Teal</span>
+                    </li>
+                    <li data-theme="green">
+                        <div class="green"></div>
+                        <span>Green</span>
+                    </li>
+                    <li data-theme="light-green">
+                        <div class="light-green"></div>
+                        <span>Light Green</span>
+                    </li>
+                    <li data-theme="lime">
+                        <div class="lime"></div>
+                        <span>Lime</span>
+                    </li>
+                    <li data-theme="yellow">
+                        <div class="yellow"></div>
+                        <span>Yellow</span>
+                    </li>
+                    <li data-theme="amber">
+                        <div class="amber"></div>
+                        <span>Amber</span>
+                    </li>
+                    <li data-theme="orange">
+                        <div class="orange"></div>
+                        <span>Orange</span>
+                    </li>
+                    <li data-theme="deep-orange">
+                        <div class="deep-orange"></div>
+                        <span>Deep Orange</span>
+                    </li>
+                    <li data-theme="brown">
+                        <div class="brown"></div>
+                        <span>Brown</span>
+                    </li>
+                    <li data-theme="grey">
+                        <div class="grey"></div>
+                        <span>Grey</span>
+                    </li>
+                    <li data-theme="blue-grey">
+                        <div class="blue-grey"></div>
+                        <span>Blue Grey</span>
+                    </li>
+                    <li data-theme="black">
+                        <div class="black"></div>
+                        <span>Black</span>
+                    </li>
+                </ul>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="settings">
+                <div class="demo-settings">
+                    <p>GENERAL SETTINGS</p>
+                    <ul class="setting-list">
+                        <li>
+                            <span>Report Panel Usage</span>
+                            <div class="switch">
+                                <label><input type="checkbox" checked><span class="lever"></span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Email Redirect</span>
+                            <div class="switch">
+                                <label><input type="checkbox"><span class="lever"></span></label>
+                            </div>
+                        </li>
+                    </ul>
+                    <p>SYSTEM SETTINGS</p>
+                    <ul class="setting-list">
+                        <li>
+                            <span>Notifications</span>
+                            <div class="switch">
+                                <label><input type="checkbox" checked><span class="lever"></span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Auto Updates</span>
+                            <div class="switch">
+                                <label><input type="checkbox" checked><span class="lever"></span></label>
+                            </div>
+                        </li>
+                    </ul>
+                    <p>ACCOUNT SETTINGS</p>
+                    <ul class="setting-list">
+                        <li>
+                            <span>Offline</span>
+                            <div class="switch">
+                                <label><input type="checkbox"><span class="lever"></span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Location Permission</span>
+                            <div class="switch">
+                                <label><input type="checkbox" checked><span class="lever"></span></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- #END# Right Sidebar -->
+</section>
