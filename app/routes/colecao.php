@@ -8,12 +8,12 @@
 
 $colecao = $app['controllers_factory'];
 
-$colecao->get('/{nome}', function ($nome) use ($app) {
+$colecao->get('/{id}/{nome}', function ($id, $nome) use ($app) {
 
-    $colecao = $app['colecao.repository']->findOneBy(['nome' => $nome]);
+    $colecao = $app['colecao.repository']->find($id);
     $categoria = $app['categoria.repository']->findBy(['colecao' => $colecao], ['nome' => 'ASC']);
 
-    return $app['twig']->render('user/colecao.html.twig', ['categorias' => $categoria]);
+    return $app['twig']->render('user/colecao.html.twig', ['categorias' => $categoria, 'colecao' => $colecao]);
 
 })->bind('colecao');
 

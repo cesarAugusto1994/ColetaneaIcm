@@ -77,6 +77,14 @@ class Categoria
     }
 
     /**
+     * @return mixed
+     */
+    public function getNomeFormatado()
+    {
+        return (str_replace(" ", "-", trim(strtolower($this->nome))));
+    }
+
+    /**
      * @param string $nome
      */
     public function setNome($nome)

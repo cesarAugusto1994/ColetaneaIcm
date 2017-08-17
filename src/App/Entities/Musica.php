@@ -155,6 +155,18 @@ class Musica
     }
 
     /**
+     * @return string
+     */
+    public function getNomeFormatado()
+    {
+        if (empty($this->numero)) {
+            $this->nome;
+        }
+
+        return "{$this->numero} - {$this->nome}";
+    }
+
+    /**
      * @param string $nome
      */
     public function setNome($nome)

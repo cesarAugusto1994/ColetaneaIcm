@@ -57,9 +57,9 @@ class MusicaAnexos
     private $ativo;
 
     /**
-     * @var \Entities\Musica
+     * @var Musica
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Musica")
+     * @ORM\ManyToOne(targetEntity="Musica")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="musica_id", referencedColumnName="id")
      * })
@@ -67,9 +67,9 @@ class MusicaAnexos
     private $musica;
 
     /**
-     * @var \Entities\TipoAnexo
+     * @var TipoAnexo
      *
-     * @ORM\ManyToOne(targetEntity="Entities\TipoAnexo")
+     * @ORM\ManyToOne(targetEntity="TipoAnexo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="tipo_id", referencedColumnName="id")
      * })
@@ -77,14 +77,158 @@ class MusicaAnexos
     private $tipo;
 
     /**
-     * @var \Entities\Usuarios
+     * @var Usuarios
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Usuarios")
+     * @ORM\ManyToOne(targetEntity="Usuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
     private $usuario;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param string $nome
+     */
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLinkExterno()
+    {
+        return $this->linkExterno;
+    }
+
+    /**
+     * @param int $linkExterno
+     */
+    public function setLinkExterno($linkExterno)
+    {
+        $this->linkExterno = $linkExterno;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param string $link
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCadastro()
+    {
+        return $this->cadastro;
+    }
+
+    /**
+     * @param \DateTime $cadastro
+     */
+    public function setCadastro($cadastro)
+    {
+        $this->cadastro = $cadastro;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAtivo()
+    {
+        return $this->ativo;
+    }
+
+    /**
+     * @param bool $ativo
+     */
+    public function setAtivo($ativo)
+    {
+        $this->ativo = $ativo;
+    }
+
+    /**
+     * @return Musica
+     */
+    public function getMusica()
+    {
+        return $this->musica;
+    }
+
+    /**
+     * @param Musica $musica
+     */
+    public function setMusica($musica)
+    {
+        $this->musica = $musica;
+    }
+
+    /**
+     * @return TipoAnexo
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * @param TipoAnexo $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
+    /**
+     * @return Usuarios
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuarios $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
 
 
 }

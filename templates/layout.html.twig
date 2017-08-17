@@ -4,10 +4,12 @@
 
     {% include 'sidebars.html.twig' %}
 
-    <section class="content">
+    <section class="content" style="margin-top: 0">
         <div class="container-fluid">
             {% block container %}{% endblock %}
         </div>
     </section>
 
 {% endblock %}
+
+{% block js %}{% endblock %}

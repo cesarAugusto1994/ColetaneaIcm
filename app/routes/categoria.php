@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 $categoria = $app['controllers_factory'];
 
-$categoria->get('/{nome}', function ($nome) use ($app) {
+$categoria->get('/{id}/{nome}', function ($id, $nome) use ($app) {
 
-    $categoria = $app['categoria.repository']->findOneBy(['nome' => $nome]);
+    $categoria = $app['categoria.repository']->find($id);
     $musicas = $app['musica.repository']->findBy(['categoria' => $categoria], [], null, 1);
 
-    return $app['twig']->render('user/categoria.html.twig', ['musicas' => $musicas]);
+    return $app['twig']->render('user/categoria.html.twig', ['musicas' => $musicas, 'categoria' => $categoria]);
 
 })->bind('categoria');
 

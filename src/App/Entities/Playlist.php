@@ -36,15 +36,77 @@ class Playlist
     private $nome;
 
     /**
-     * @var \Entities\Usuarios
+     * @var Usuarios
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Usuarios")
+     * @ORM\ManyToOne(targetEntity="Usuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
     private $usuario;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCadastro()
+    {
+        return $this->cadastro;
+    }
+
+    /**
+     * @param \DateTime $cadastro
+     */
+    public function setCadastro($cadastro)
+    {
+        $this->cadastro = $cadastro;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param string $nome
+     */
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+    }
+
+    /**
+     * @return Usuarios
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuarios $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
 }
 

@@ -29,9 +29,9 @@ class Favoritos
     private $cadastro;
 
     /**
-     * @var \Entities\Musica
+     * @var Musica
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Musica")
+     * @ORM\ManyToOne(targetEntity="Musica")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="musica_id", referencedColumnName="id")
      * })
@@ -39,14 +39,78 @@ class Favoritos
     private $musica;
 
     /**
-     * @var \Entities\Usuarios
+     * @var Usuarios
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Usuarios")
+     * @ORM\ManyToOne(targetEntity="Usuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
     private $usuario;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCadastro()
+    {
+        return $this->cadastro;
+    }
+
+    /**
+     * @param \DateTime $cadastro
+     */
+    public function setCadastro($cadastro)
+    {
+        $this->cadastro = $cadastro;
+    }
+
+    /**
+     * @return Musica
+     */
+    public function getMusica()
+    {
+        return $this->musica;
+    }
+
+    /**
+     * @param Musica $musica
+     */
+    public function setMusica($musica)
+    {
+        $this->musica = $musica;
+    }
+
+    /**
+     * @return Usuarios
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuarios $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
 
 
 }

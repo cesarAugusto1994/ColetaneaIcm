@@ -20,11 +20,12 @@ $app->get('/login', function (Request $request) use ($app) {
 
 $app->get('/', function () use ($app) {
 
-    $grupos = $app['grupo.repository']->findBy([]);
-
+    $grupos = $app['grupo.repository']->findBy([], [], 2, 1);
+    $playlists = $app['playlist.repository']->findBy([], [], 2);
+    $favoritos = $app['favoritos.repository']->findBy([], [], 2);
     $colecoes = $app['colecao.repository']->findBy([]);
 
-    return $app['twig']->render('user/index.html.twig', ['grupos' => $grupos, 'colecoes' => $colecoes]);
+    return $app['twig']->render('user/index.html.twig', ['grupos' => $grupos, 'colecoes' => $colecoes, 'playlists' => $playlists, 'favoritos' => $favoritos]);
 })
 ->bind('homepage')
 ;
@@ -95,3 +96,4 @@ $app->get('/redirect', function () use ($app) {
 
 $app->mount('/user/colecao', include __DIR__ . '/routes/colecao.php');
 $app->mount('/user/categoria', include __DIR__ . '/routes/categoria.php');
+$app->mount('/user/musica', include __DIR__ . '/routes/musica.php');

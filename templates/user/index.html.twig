@@ -11,23 +11,14 @@
             <div class="card">
                 <div class="header bg-red">
                     <h2>
-                        Meus Grupos <small>Description text here...</small>
+                        Meus Grupos
                     </h2>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);">Action</a></li>
-                                <li><a href="javascript:void(0);">Another action</a></li>
-                                <li><a href="javascript:void(0);">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
                 </div>
                 <div class="body">
-                    Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
+                    {% for grupo in grupos %}
+                        <p class="text-capitalize">{{ grupo.nome }}</p>
+                    {% endfor %}
+                    <p>mais...</p>
                 </div>
             </div>
         </div>
@@ -35,28 +26,14 @@
             <div class="card">
                 <div class="header bg-cyan">
                     <h2>
-                        Minhas Playlists <small>Description text here...</small>
+                        Minhas Playlists
                     </h2>
-                    <ul class="header-dropdown m-r--5">
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i class="material-icons">mic</i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);">Action</a></li>
-                                <li><a href="javascript:void(0);">Another action</a></li>
-                                <li><a href="javascript:void(0);">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
                 </div>
                 <div class="body">
-                    Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
+                    {% for playlist in playlists %}
+                        <p class="text-capitalize">{{ playlist.nome }}</p>
+                    {% endfor %}
+                    <p>mais...</p>
                 </div>
             </div>
         </div>
@@ -64,57 +41,38 @@
             <div class="card">
                 <div class="header bg-green">
                     <h2>
-                        Meus Favoritos <small>Description text here...</small>
+                        Meus Favoritos
                     </h2>
-                    <ul class="header-dropdown m-r-0">
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i class="material-icons">info_outline</i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i class="material-icons">help_outline</i>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
                 <div class="body">
-                    Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
+                    {% for favorito in favoritos %}
+                        <p class="text-capitalize"><a href="{{ path('musica', { id : favorito.musica.id, nome : favorito.musica.nome }) }}">{{ favorito.musica.nome }}</a></p>
+                    {% endfor %}
+                    <p>mais...</p>
                 </div>
             </div>
         </div>
     </div>
 
-<div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-            <div class="header bg-teal">
-                <h2>
-                    Colecoes <small>Description text here...</small>
-                </h2>
-                <ul class="header-dropdown m-r--5">
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another action</a></li>
-                            <li><a href="javascript:void(0);">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="body">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header bg-teal">
+                    <h2>
+                        Cole&ccedil;&otilde;es
+                    </h2>
+                </div>
+                <div class="body">
 
-                {% for colecao in colecoes %}
-                    <p class="text-capitalize lead"><a href="{{ path('colecao', { nome : colecao.nome|lower }) }}">{{ colecao.nome }}</a></p>
-                {% endfor %}
+                    {% for colecao in colecoes %}
+                        <p class="text-capitalize"><a
+                                    href="{{ path('colecao', { id : colecao.id, nome : colecao.nome|lower }) }}">{{ colecao.nome }}</a>
+                        </p>
+                    {% endfor %}
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 {% endblock %}
