@@ -1,0 +1,41 @@
+{% extends "layout.html.twig" %}
+
+{% block container %}
+
+    <div class="block-header">
+
+        <ol class="breadcrumb breadcrumb-bg-teal">
+            <li><a href="{{ path('homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('usuarios') }}">Usuarios</a></li>
+            <li class="active">{{ usuario.nome }}</li>
+        </ol>
+
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header bg-teal">
+                    <h2>
+                        Perfil
+                    </h2>
+                </div>
+                <div class="body">
+
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="https://coletaneaicm.com/web/assets/blog/img/avatar/{{ usuario.avatar }}" alt="...">
+                                <div class="caption">
+                                    <h3>{{ usuario.nome }}</h3>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

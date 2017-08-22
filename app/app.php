@@ -7,16 +7,12 @@ use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 
 $app = new Application();
+$app['debug'] = true;
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
-$app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
-$app['twig'] = $app->extend('twig', function ($twig, $app) {
-    // add custom globals, filters, tags, ...
 
-    return $twig;
-});
-/*
+
 $app->register(new Silex\Provider\SecurityServiceProvider());
 $app['security.default_encoder'] = function ($app) {
     return $app['security.encoder.digest'];
@@ -45,9 +41,6 @@ $app['security.firewalls'] = array(
             'logout_path' => '/admin/logout',
             'invalidate_session' => true,
         ),
-        'users' => function () use ($app) {
-            return new Security\UserProvider($app['db'], $app);
-        },
         'remember_me' => array(
             'secret'   => '%secret%',
             'lifetime' => 100000,
@@ -57,6 +50,9 @@ $app['security.firewalls'] = array(
             // the following line to always enable it.
             'always_remember_me' => true,
         ),
+        'users' => function () use ($app) {
+            return new Security\UserProvider($app['db'], $app);
+        },
     ),
 );
 $app['security.access_rules'] = array(
@@ -74,14 +70,28 @@ $app['security.role_hierarchy'] = array(
 
 $app->register(new \Silex\Provider\SessionServiceProvider());
 $app['session.storage.save_path'] = __DIR__ . '/../var/cache/sessions/';
-$app['session.storage.options'] = ['cookie_lifetime' => 10800];
+$app['session.storage.options'] = ['cookie_lifetime' => 108000];
 $app['session']->start();
 $app->register(new Silex\Provider\RememberMeServiceProvider());
-*/
-require_once __DIR__ . '/configs.php';
-require_once __DIR__ . '/providers.php';
-require_once __DIR__ . '/services.php';
+$app->register(new \Silex\Provider\TwigServiceProvider(),
+    array(
+        'twig.path' => __DIR__ . '/../templates/',
+        'twig.options' => array(
+            'cache' => __DIR__ . '/../var/cache/twig',
+            'strict_variables' => true,
+        ),
+    )
+);
+$app['twig'] = $app->extend('twig', function ($twig, $app) {
+    // add custom globals, filters, tags, ...
 
-$app['debug'] = true;
+    return $twig;
+});
+
+require_once __DIR__ . '/configs.php';
+require_once __DIR__ . '/middlewares.php';
+require_once __DIR__ . '/providers.php';
+
+require_once __DIR__ . '/services.php';
 
 return $app;

@@ -1,0 +1,50 @@
+{% extends "layout.html.twig" %}
+
+{% block container %}
+
+    <div class="block-header">
+
+        <ol class="breadcrumb breadcrumb-bg-teal">
+            <li><a href="{{ path('homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('grupos') }}">Grupos</a></li>
+            <li class="active">{{ grupo.nome }}</li>
+        </ol>
+
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="header bg-cyan">
+                    <h2>
+                        Musicas
+                    </h2>
+                </div>
+                <div class="body">
+                    {% for musica in musicas %}
+                    <p>
+                        <a href="{{ path('musica', { id : musica.musica.id, nome : musica.musica.nome }) }}">{{ musica.musica.nome }}</a>
+                    </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="header bg-cyan">
+                    <h2>
+                        Usuarios
+                    </h2>
+                </div>
+                <div class="body">
+                        {% for usuario in usuarios %}
+                            <p>
+                                <a href="{{ path('usuario', { id : usuario.usuario.id, nome : usuario.usuario.nome }) }}">{{ usuario.usuario.nome }}</a>
+                            </p>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

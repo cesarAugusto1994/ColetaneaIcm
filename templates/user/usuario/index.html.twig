@@ -1,0 +1,47 @@
+{% extends "layout.html.twig" %}
+
+{% block container %}
+
+    <div class="block-header">
+
+        <ol class="breadcrumb breadcrumb-bg-teal">
+            <li><a href="{{ path('homepage') }}">Inicio</a></li>
+            <li class="active">Usuarios</li>
+        </ol>
+
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header bg-teal">
+                    <h2>
+                        Usuarios
+                    </h2>
+                </div>
+                <div class="body">
+
+                        {% for usuario in usuarios %}
+
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <a href="#">
+                                        {% if usuario.avatar  %}
+                                            <img style="max-width: 32px; max-height: 32px;" class="media-object" src="https://coletaneaicm.com/web/assets/blog/img/avatar/{{ usuario.avatar }}" alt="...">
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{ usuario.nome }}</h4>
+                                    <p>Cadastro: {{ usuario.cadastro|date('d/m/Y H:i:s') }}</p>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

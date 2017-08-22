@@ -29,9 +29,9 @@ class GrupoUsuarios
     private $administrador = '0';
 
     /**
-     * @var \Entities\Grupo
+     * @var Grupo
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Grupo")
+     * @ORM\ManyToOne(targetEntity="Grupo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="grupo_id", referencedColumnName="id")
      * })
@@ -39,14 +39,78 @@ class GrupoUsuarios
     private $grupo;
 
     /**
-     * @var \Entities\Usuarios
+     * @var Usuarios
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Usuarios")
+     * @ORM\ManyToOne(targetEntity="Usuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
     private $usuario;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdministrador()
+    {
+        return $this->administrador;
+    }
+
+    /**
+     * @param bool $administrador
+     */
+    public function setAdministrador($administrador)
+    {
+        $this->administrador = $administrador;
+    }
+
+    /**
+     * @return Grupo
+     */
+    public function getGrupo()
+    {
+        return $this->grupo;
+    }
+
+    /**
+     * @param Grupo $grupo
+     */
+    public function setGrupo($grupo)
+    {
+        $this->grupo = $grupo;
+    }
+
+    /**
+     * @return Usuarios
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuarios $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
 
 
 }

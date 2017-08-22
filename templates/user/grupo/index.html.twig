@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+
+{% block container %}
+
+    <div class="block-header">
+
+        <ol class="breadcrumb breadcrumb-bg-teal">
+            <li><a href="{{ path('homepage') }}">Inicio</a></li>
+            <li class="active">Grupos</li>
+        </ol>
+
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header bg-teal">
+                    <h2>
+                        Grupos
+                    </h2>
+                </div>
+                <div class="body">
+                        {% for grupo in grupos %}
+                            <p>
+                                <a href="{{ path('grupo', { id : grupo.id, nome : grupo.nome }) }}">{{ grupo.nome }}</a>
+                            </p>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

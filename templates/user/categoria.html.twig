@@ -3,9 +3,13 @@
 {% block container %}
 
     <div class="block-header">
-        <h2><a href="/" class="btn btn-flat btn-link">Inicio</a> >> <a
-                    href="{{ path('colecao', { id : categoria.colecao.id, nome : categoria.colecao.nomeFormatado }) }}"
-                    class="btn btn-flat btn-link">{{ categoria.colecao.nome }}</a> >> {{ categoria.nome }}</h2>
+
+        <ol class="breadcrumb breadcrumb-bg-teal">
+            <li><a href="{{ path('homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('colecao', { id : categoria.colecao.id, nome : categoria.colecao.nomeFormatado }) }}">{{ categoria.colecao.nome }}</a></li>
+            <li class="active">{{ categoria.nome  }}</li>
+        </ol>
+
     </div>
 
     <div class="row clearfix">
@@ -22,7 +26,7 @@
                             <tbody>
                             {% for musica in musicas %}
                                 <tr>
-                                    <td><a href="{{ path('musica', { id : musica.id, nome : musica.nome }) }}">{{ musica.nome }}</a></td>
+                                    <td><a href="{{ path('musica', { id : musica.id, nome : musica.nome }) }}">{{ musica.nomeFormatado }}</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>

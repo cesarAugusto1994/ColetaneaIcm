@@ -1,14 +1,26 @@
 {% extends "layout.html.twig" %}
 
+{% block css %}
+
+    {{ parent() }}
+    <link href="{{ asset('assets/plugins/jQuery-Chord-Transposer/jquery.transposer.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('assets/plugins/jQuery.filer/css/jquery.filer.css') }}" type="text/css" rel="stylesheet"/>
+
+
+{% endblock %}
+
 {% block container %}
 
     <div class="block-header">
-        <h2><a href="/" class="btn btn-flat btn-link">Inicio</a> >> <a
-                    href="{{ path('colecao', { id : categoria.colecao.id, nome : categoria.colecao.nomeFormatado }) }}"
-                    class="btn btn-flat btn-link">{{ categoria.colecao.nome }}</a> >>
-            <a
-                    href="{{ path('categoria', { id : categoria.id, nome : categoria.nomeFormatado }) }}"
-                    class="btn btn-flat btn-link">{{ categoria.nome }}</a> >> {{ musica.nomeFormatado }}</h2>
+
+        <ol class="breadcrumb breadcrumb-bg-teal">
+            <li><a href="{{ path('homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('colecao', { id : categoria.colecao.id, nome : categoria.colecao.nomeFormatado }) }}">{{ categoria.colecao.nome }}</a></li>
+            <li><a href="{{ path('categoria', { id : categoria.id, nome : categoria.nomeFormatado }) }}">{{ categoria.nome }}</a></li>
+            <li class="active">{{ musica.nomeFormatado }}</li>
+        </ol>
+
     </div>
 
     <div class="row clearfix">
@@ -20,6 +32,11 @@
                     </h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
+                            <a href="javascript:void(0);" data-target="#upload" data-toggle="modal" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">file_upload</i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons">star</i>
                             </a>
@@ -27,17 +44,72 @@
                     </ul>
                 </div>
                 <div class="body">
-
-                    {#<pre data-key="{{ musica.tom }}">{{ musica.letra }}</pre>#}
-
-                    <div class="row clearfix">
                         {% for anexo in anexos %}
                             <p>
-                                <a href="#">{{ anexo.nome }}</a>
+                                <a download="{{ anexo.nome }}" href="assets/blog/musicas/{{ anexo.link }}">{{ anexo.nome }}</a>
                             </p>
                         {% endfor %}
-                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header bg-teal">
+                    <h2>
+                        LETRA
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <pre id="content" style="background-color: transparent; border: 0" data-key="{{ musica.tom }}">{{ musica.letra|raw }}</pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="upload" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="defaultModalLabel">UPLOAD</h4>
+                </div>
+                <div class="modal-body">
+
+                    <input class="input" type="file" name="files[]" id="filer_input4" multiple/>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="defaultModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan
+                    vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper.
+                    Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus
+                    nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla.
+                    Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
                 </div>
             </div>
         </div>
@@ -48,10 +120,30 @@
 
 {% block js %}
 
+    {{ parent() }}
+
+    <script src="{{ asset('assets/plugins/jQuery-Chord-Transposer/jquery.transposer.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jQuery.filer/js/jquery.filer.min.js') }}"></script>
+    <script src="{{ asset('assets/js/file-uploader-drag-drop.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/file-uploader.js') }}" type="text/javascript"></script>
+
     <script type="text/javascript">
-        $(function () {
-            $("pre").transpose({key: 'C'});
+
+        $(document).ready(function () {
+            $("#content").transpose({key: 'C'});
+
+
+
+            $('#filer_input4').filer({
+                showThumbs: true,
+                addMore: true,
+                limit: 40,
+                maxSize: 25,
+                extensions: ["jpg", "png", "mp3", "pdf", "doc", "docx", "gif", "enc", "mid", "3gp", "wma", "wav"],
+            });
+
         });
+
     </script>
 
 {% endblock %}

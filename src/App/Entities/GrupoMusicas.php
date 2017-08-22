@@ -22,9 +22,9 @@ class GrupoMusicas
     private $id;
 
     /**
-     * @var \Entities\GrupoMusicaSituacao
+     * @var GrupoMusicaSituacao
      *
-     * @ORM\ManyToOne(targetEntity="Entities\GrupoMusicaSituacao")
+     * @ORM\ManyToOne(targetEntity="GrupoMusicaSituacao")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="situacao_id", referencedColumnName="id")
      * })
@@ -32,9 +32,9 @@ class GrupoMusicas
     private $situacao;
 
     /**
-     * @var \Entities\Musica
+     * @var Musica
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Musica")
+     * @ORM\ManyToOne(targetEntity="Musica")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="musica_id", referencedColumnName="id")
      * })
@@ -42,14 +42,78 @@ class GrupoMusicas
     private $musica;
 
     /**
-     * @var \Entities\Grupo
+     * @var Grupo
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Grupo")
+     * @ORM\ManyToOne(targetEntity="Grupo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="grupo_id", referencedColumnName="id")
      * })
      */
     private $grupo;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return GrupoMusicaSituacao
+     */
+    public function getSituacao()
+    {
+        return $this->situacao;
+    }
+
+    /**
+     * @param GrupoMusicaSituacao $situacao
+     */
+    public function setSituacao($situacao)
+    {
+        $this->situacao = $situacao;
+    }
+
+    /**
+     * @return Musica
+     */
+    public function getMusica()
+    {
+        return $this->musica;
+    }
+
+    /**
+     * @param Musica $musica
+     */
+    public function setMusica($musica)
+    {
+        $this->musica = $musica;
+    }
+
+    /**
+     * @return Grupo
+     */
+    public function getGrupo()
+    {
+        return $this->grupo;
+    }
+
+    /**
+     * @param Grupo $grupo
+     */
+    public function setGrupo($grupo)
+    {
+        $this->grupo = $grupo;
+    }
 
 
 }

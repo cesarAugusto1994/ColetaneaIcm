@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Login
  *
  * @ORM\Table(name="login", indexes={@ORM\Index(name="IDX_AA08CB10DB38439E", columns={"usuario_id"}), @ORM\Index(name="login_sessao_index", columns={"sessao"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\LoginRepository")
  */
 class Login
 {
@@ -43,9 +43,9 @@ class Login
     private $sessao;
 
     /**
-     * @var \Entities\Usuarios
+     * @var Usuarios
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Usuarios")
+     * @ORM\ManyToOne(targetEntity="Usuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
@@ -117,7 +117,7 @@ class Login
     }
 
     /**
-     * @return \Entities\Usuarios
+     * @return Usuarios
      */
     public function getUsuario()
     {
@@ -125,7 +125,7 @@ class Login
     }
 
     /**
-     * @param \Entities\Usuarios $usuario
+     * @param Usuarios $usuario
      */
     public function setUsuario($usuario)
     {

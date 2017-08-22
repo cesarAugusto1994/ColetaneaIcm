@@ -11,17 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 $favoritos = $app['controllers_factory'];
 
-$favoritos->get('/{id}/{nome}', function ($id, $nome) use ($app) {
+$favoritos->get('/', function () use ($app) {
 
-    /**
-     * @var Musica $musica
-     */
-    $musica = $app['musica.repository']->findOneBy(['id' => $id, 'nome' => $nome]);
-    $categoria = $app['categoria.repository']->findOneBy(['nome' => $musica->getCategoria()->getNome()]);
+    $usuario = $app['session']->get('user');
 
-    $anexos = $app['musica.anexos.repository']->findBy(['musica' => $musica]);
-
-    return $app['twig']->render('user/musica.html.twig', ['musica' => $musica, 'categoria' => $categoria, 'anexos' => $anexos]);
+    $favoritos = $app['favoritos.repository']->findBy(['usuario' => $usuario]);
+    return $app['twig']->render('user/favorito/index.html.twig', ['favoritos' => $favoritos]);
 
 })->bind('favoritos');
 

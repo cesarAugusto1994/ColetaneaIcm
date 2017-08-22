@@ -3,9 +3,10 @@
 <head>
     <title>{% block title '' %} - Teste</title>
     {% include 'css.html.twig' %}
+    {% block css %}{% endblock %}
 </head>
 
-<body class="theme-red">
+<body class="theme-teal">
 {% include 'header.html.twig' %}
 
 {% block content %}{% endblock %}

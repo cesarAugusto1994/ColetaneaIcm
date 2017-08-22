@@ -1,0 +1,41 @@
+{% extends "layout.html.twig" %}
+
+{% block container %}
+
+    <div class="block-header">
+
+        <ol class="breadcrumb breadcrumb-bg-teal">
+            <li><a href="{{ path('homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('playlists') }}">Playlists</a></li>
+            <li class="active">{{ playlist.nome }}</li>
+        </ol>
+
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header bg-cyan">
+                    <h2>
+                        Musicas
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">play_circle_outline</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    {% for musica in musicas %}
+                        <p>
+                            <a href="{{ path('musica', { id : musica.musica.id, nome : musica.musica.nome }) }}">{{ musica.musica.nome }}</a>
+                        </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

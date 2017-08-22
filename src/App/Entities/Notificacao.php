@@ -43,14 +43,94 @@ class Notificacao
     private $dataHora;
 
     /**
-     * @var \Entities\Usuarios
+     * @var Usuarios
      *
-     * @ORM\ManyToOne(targetEntity="Entities\Usuarios")
+     * @ORM\ManyToOne(targetEntity="Usuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
     private $usuario;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMensagem()
+    {
+        return $this->mensagem;
+    }
+
+    /**
+     * @param string $mensagem
+     */
+    public function setMensagem($mensagem)
+    {
+        $this->mensagem = $mensagem;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisualizada()
+    {
+        return $this->visualizada;
+    }
+
+    /**
+     * @param bool $visualizada
+     */
+    public function setVisualizada($visualizada)
+    {
+        $this->visualizada = $visualizada;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataHora()
+    {
+        return $this->dataHora;
+    }
+
+    /**
+     * @param \DateTime $dataHora
+     */
+    public function setDataHora($dataHora)
+    {
+        $this->dataHora = $dataHora;
+    }
+
+    /**
+     * @return Usuarios
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuarios $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
 
 
 }
