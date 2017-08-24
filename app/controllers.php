@@ -9,6 +9,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 Request::setTrustedProxies(array('127.0.0.1'));
 
+$app->get('/', function () use ($app) {
+
+    if (!empty($app['session']->get('user'))) {
+        return $app->redirect('/user/');
+    }
+
+    return $app->redirect('login');
+
+})->bind('home');
+
 $app->get('/login', function (Request $request) use ($app) {
 
     return $app['twig']->render('login.html.twig', array(
