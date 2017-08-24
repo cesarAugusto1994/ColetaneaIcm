@@ -1,0 +1,193 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+    {{ parent() }}
+    <link href="{{ asset('assets/css/custom.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block container %}
+
+    <div class="block-header">
+
+        <ol class="breadcrumb breadcrumb-bg-teal">
+            <li><a href="{{ path('homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('playlists') }}">Playlists</a></li>
+            <li class="active">{{ playlist.nome }}</li>
+        </ol>
+
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header bg-red">
+                    <h2>
+                        Musicas
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="{{ path('playlist_play', { id : playlist.id, nome : playlist.nome }) }}" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">play_circle_outline</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+
+
+                    <div class="column add-bottom">
+                        <div id="mainwrap">
+                            <div id="nowPlay">
+                                <span class="left" id="npAction">Paused...</span>
+                                <span class="right" id="npTitle"></span>
+                            </div>
+                            <div id="audiowrap">
+                                <div id="audio0">
+                                    <audio preload id="audio1" controls="controls">Your browser does not support
+                                        HTML5 Audio!
+                                    </audio>
+                                </div>
+                                <div id="tracks">
+                                    <a id="btnPrev">&laquo;</a>
+                                    <a id="btnNext">&raquo;</a>
+                                </div>
+                            </div>
+                            <div id="plwrap">
+                                <ul id="plList"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+
+    <script>
+
+        $(document).ready(function () {
+
+            var b = document.documentElement;
+            b.setAttribute('data-useragent', navigator.userAgent);
+            b.setAttribute('data-platform', navigator.platform);
+
+            jQuery(function ($) {
+
+                if ($("#hasfiles").val() == false) {
+                    return false;
+                }
+
+                songs = [];
+
+                {% for anexo in musicas %}
+                songs.push(
+                    {
+                        "track": {{ loop.index }},
+                        "name": "{{ anexo.musica.nome }}",
+                        "file": "{{ anexo.musica.nome }}",
+                        "user": "{{ anexo.musica.usuario.nome }}",
+                        "date": "{{ anexo.musica.cadastro|date('d/m/y H:i') }}",
+                    }
+                );
+                {% endfor %}
+
+                tracks = songs;
+
+                var supportsAudio = !!document.createElement('audio').canPlayType;
+                if (supportsAudio) {
+                    var index = 0,
+                        playing = false,
+                        mediaPath = "https://coletaneaicm.com/web/assets/blog/musicas/",
+                        extension = '',
+                        tracks = tracks,
+                        buildPlaylist = $.each(tracks, function (key, value) {
+                            var trackNumber = value.track,
+                                trackName = value.name,
+                                trackLength = value.length;
+                            if (trackNumber.toString().length === 1) {
+                                trackNumber = '0' + trackNumber;
+                            } else {
+                                trackNumber = '' + trackNumber;
+                            }
+                            $('#plList').append('<li><div class="plItem"><div class="plNum">' + trackNumber + '.</div><div class="plTitle">' + trackName + '</div><div class="plLength">' + '' + '</div></div></li>');
+                        }),
+                        trackCount = tracks.length,
+                        npAction = $('#npAction'),
+                        npTitle = $('#npTitle'),
+                        audio = $('#audio1').bind('play', function () {
+                            playing = true;
+                            npAction.text('Now Playing...');
+                        }).bind('pause', function () {
+                            playing = false;
+                            npAction.text('Paused...');
+                        }).bind('ended', function () {
+                            npAction.text('Paused...');
+                            if ((index + 1) < trackCount) {
+                                index++;
+                                loadTrack(index);
+                                audio.play();
+                            } else {
+                                audio.pause();
+                                index = 0;
+                                loadTrack(index);
+                            }
+                        }).get(0),
+                        btnPrev = $('#btnPrev').click(function () {
+                            if ((index - 1) > -1) {
+                                index--;
+                                loadTrack(index);
+                                if (playing) {
+                                    audio.play();
+                                }
+                            } else {
+                                audio.pause();
+                                index = 0;
+                                loadTrack(index);
+                            }
+                        }),
+                        btnNext = $('#btnNext').click(function () {
+                            if ((index + 1) < trackCount) {
+                                index++;
+                                loadTrack(index);
+                                if (playing) {
+                                    audio.play();
+                                }
+                            } else {
+                                audio.pause();
+                                index = 0;
+                                loadTrack(index);
+                            }
+                        }),
+                        li = $('#plList li').click(function () {
+                            var id = parseInt($(this).index());
+                            if (id !== index) {
+                                playTrack(id);
+                            }
+                        }),
+                        loadTrack = function (id) {
+                            $('.plSel').removeClass('plSel');
+                            $('#plList li:eq(' + id + ')').addClass('plSel');
+                            npTitle.text(tracks[id].name + ' - ' + tracks[id].user + ' - ' + tracks[id].date);
+                            index = id;
+                            audio.src = mediaPath + tracks[id].file;
+                        },
+                        playTrack = function (id) {
+                            loadTrack(id);
+                            audio.play();
+                        };
+                    extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+                    loadTrack(index);
+                }
+            });
+
+
+        });
+
+    </script>
+
+{% endblock %}

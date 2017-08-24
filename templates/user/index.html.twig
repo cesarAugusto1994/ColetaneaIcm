@@ -20,7 +20,7 @@
                 <div class="body">
                     {% for grupo in grupos %}
                         <p>
-                            <a href="{{ path('grupo', { id : grupo.id, nome : grupo.nome }) }}">{{ grupo.nome }}</a>
+                            <a href="{{ path('grupo', { id : grupo.grupo.id, nome : grupo.grupo.nome }) }}">{{ grupo.grupo.nome }}</a>
                         </p>
                     {% endfor %}
                     <p><a href="{{ path('grupos') }}">mais...</a></p>

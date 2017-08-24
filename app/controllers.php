@@ -32,18 +32,20 @@ $app->get('/forgot-password', function (Request $request) use ($app) {
 
 $app->get('/user/', function () use ($app) {
 
-    $usuario = $app['session']->get('user');
+    /*$usuario = $app['session']->get('user');
 
-    if (!isset($usuario)) {
+    if (empty($usuario)) {
         $user = $app['usuarios.repository']->find($app['user']->getId());
         $app['session']->set('user', $user);
         $usuario = $app['session']->get('user');
         $app['session']->save();
-    }
+    }*/
 
-    $grupos = $app['grupo.repository']->findBy([], [], 2, 1);
-    $playlists = $app['playlist.repository']->findBy(['usuario' => $usuario]);
-    $favoritos = $app['favoritos.repository']->findBy(['usuario' => $usuario]);
+    $usuario = $app['usuario'];
+
+    $grupos = $app['grupo.usuarios.repository']->findBy(['usuario' => $usuario], [], 2, 1);
+    $playlists = $app['playlist.repository']->findBy(['usuario' => $usuario], [], 2);
+    $favoritos = $app['favoritos.repository']->findBy(['usuario' => $usuario], [], 2);
     $colecoes = $app['colecao.repository']->findBy([]);
     $categorias = $app['categoria.repository']->findBy([], ['nome' => 'ASC']);
 

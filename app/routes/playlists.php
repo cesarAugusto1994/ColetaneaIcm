@@ -27,4 +27,14 @@ $playlist->get('/{id}/{nome}', function ($id, $nome) use ($app) {
 
 })->bind('playlist');
 
+$playlist->get('/{id}/{nome}/play', function ($id, $nome) use ($app) {
+
+    $playlist = $app['playlist.repository']->find($id);
+    $playlistMusicas = $app['playlist.musicas.repository']->findBy(['playlist' => $playlist]);
+
+    return $app['twig']->render("user/playlist/play.html.twig", ['playlist' => $playlist, 'musicas' => $playlistMusicas]);
+
+})->bind('playlist_play');
+
+
 return $playlist;
